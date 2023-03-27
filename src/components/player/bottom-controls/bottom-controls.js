@@ -13,7 +13,8 @@ import accessibility from "../../../ui/icons/accessibility.svg";
 import subtitles from "../../../ui/icons/CC.svg";
 import audio from "../../../ui/icons/AD.svg";
 
-import ModalHint from "../../modal-hint/modal-hint";
+import ModalAccessibility from "../../modal-hint/modal-accessibility/modal-accessibility";
+import ModalTest from "../../modal-hint/modal-test/modal-test";
 
 export default function BottomControls({
   handleBackward,
@@ -22,12 +23,15 @@ export default function BottomControls({
   setColBlindActive,
   epilepsyActive,
   setEpilepsyActive,
+  sound,
+  setSound,
+  handlePlayButton,
 }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [soundIsHovered, setSoundIsHovered] = useState(false);
-  const [sound, setSound] = useState(100);
   const [soundState, setSoundState] = useState("max"); //max, middle or mute
   const [openModal, setOpenModal] = useState(false);
+  const [openModalTest, setOpenModalTest] = useState(false);
 
   const handleFullScreen = () => {
     const player = document.querySelector("body");
@@ -138,14 +142,17 @@ export default function BottomControls({
       </div>
       <div className={styles.right}>
         {openModal && (
-          <ModalHint
+          <ModalAccessibility
             colBlindActive={colBlindActive}
             setColBlindActive={setColBlindActive}
             epilepsyActive={epilepsyActive}
             setEpilepsyActive={setEpilepsyActive}
             setOpenModal={setOpenModal}
+            setOpenModalTest={setOpenModalTest}
+            handlePlayButton={handlePlayButton}
           />
         )}
+        {openModalTest && <ModalTest setOpenModalTest={setOpenModalTest} />}
 
         <img
           className={`${styles.svgIcon} ${styles.subtitles}`}

@@ -14,6 +14,7 @@ export default function Player({ handleClose }) {
   const [endTime, setEndTime] = useState("00:00:00");
   const [colBlindActive, setColBlindActive] = useState(false);
   const [epilepsyActive, setEpilepsyActive] = useState(false);
+  const [sound, setSound] = useState(100);
 
   const timeoutRef = useRef(null);
 
@@ -31,17 +32,40 @@ export default function Player({ handleClose }) {
       handleBackward();
     } else if (event.keyCode === 39) {
       handleForward();
+    } else if (event.keyCode === 38) {
+      handleSoundUp();
+    } else if (event.keyCode === 40) {
+      handleSoundDown();
     }
   };
 
-  const handlePlayButton = () => {
+  const handleSoundUp = () => {
+    const video = document.querySelector("video");
+    if (video.volume + 0.2 <= 1) {
+      video.volume += 0.2;
+      setSound(sound + 20)
+    }
+  }
+
+  const handleSoundDown = () => {
+    const video = document.querySelector("video");
+    if (video.volume - 0.2 >= 0) {
+      video.volume -= 0.2;
+      setSound(sound - 20)
+    }
+  }
+
+  const handlePlayButton = (opt) => {
     const video = document.querySelector("video");
     if (isPlaying) {
       video.pause();
+      setIsPlaying(!isPlaying);
     } else {
-      video.play();
+      if (opt !== "modal"){
+        video.play();
+        setIsPlaying(!isPlaying);
+      }
     }
-    setIsPlaying(!isPlaying);
   };
 
   const handleTimeUpdate = () => {
@@ -69,16 +93,16 @@ export default function Player({ handleClose }) {
   };
 
   const handleMouseLeave = () => {
-    setisHoveringControls(false);
-    clearTimeout(timeoutRef.current);
+    // setisHoveringControls(false);
+    // clearTimeout(timeoutRef.current);
   };
 
   const handleMouseMove = () => {
     setisHoveringControls(true);
-    clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      setisHoveringControls(false);
-    }, 5000);
+    // clearTimeout(timeoutRef.current);
+    // timeoutRef.current = setTimeout(() => {
+    //   setisHoveringControls(false);
+    // }, 5000);
   };
 
   const formatTime = (timeInSeconds) => {
@@ -125,6 +149,9 @@ export default function Player({ handleClose }) {
             setColBlindActive={setColBlindActive}
             epilepsyActive={epilepsyActive}
             setEpilepsyActive={setEpilepsyActive}
+            sound={sound}
+            setSound={setSound}
+            handlePlayButton={handlePlayButton}
           />
         </div>
       </div>
