@@ -30,7 +30,6 @@ export default function FontSettings({
         fontSize: fontSizes[chosen],
     })
     switchSection();
-    console.log(customSettings);
   };
 
   const handleOptClick = (e) => {

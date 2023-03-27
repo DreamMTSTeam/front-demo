@@ -83,6 +83,7 @@ export default function CustomSettings({
         {currentSection === 4 && (
             <TestResult
                 customSettings={customSettings}
+                handleClose={handleClose}
             />
         )}
       </section>

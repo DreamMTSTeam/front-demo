@@ -37,6 +37,11 @@ export default function DefaultSettings({
   const handleCustomButton = () => {
     setToCustom(true);
   };
+
+  const submitClick = () => {
+    handleClose();
+  }
+
   return (
     <>
       <section className={styles.modalTestHeader}>
@@ -51,7 +56,7 @@ export default function DefaultSettings({
           onClick={handleClose}
         />
       </section>
-      <section className={styles.modalTestContent}>
+      <section className={styles.modalTestDefaultContent}>
         <span className={styles.modalTestText}>
           Настройте плеер так, чтобы вам было удобно
         </span>
@@ -66,7 +71,7 @@ export default function DefaultSettings({
             </button>
           ))}
         </div>
-        {chosenDisabilities.length ? <button className={styles.submitDefault}>Сохранить</button> : ""}
+        {chosenDisabilities.length ? <button className={styles.submitDefault} onClick={submitClick}>Сохранить</button> : ""}
         <span className={styles.modalTestText}>
           Или настройте плеер под особые потребности самостоятельно
         </span>

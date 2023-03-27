@@ -13,7 +13,7 @@ export default function Discomfort({
     "Высокая контрастность",
     "Мелькание света на экране",
     "Яркие вспышки",
-    "Полосы, спирали и концентрические круги занимают большую часть экрана",
+    "Полосы, спирали и концентрические круги",
   ];
 
   const [chosenDiscomforts, setChosenDiscomforts] = useState([]);
@@ -40,7 +40,6 @@ export default function Discomfort({
       list.push(e.target.innerText);
     }
     setChosenDiscomforts([...list]);
-    console.log(chosenDiscomforts);
   };
 
   return (
