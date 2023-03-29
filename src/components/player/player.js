@@ -122,7 +122,7 @@ export default function Player({ handleClose }) {
         controlsList="nodownload nofullscreen"
       >
         <source
-          src={`${process.env.PUBLIC_URL}/samples/sample3.mp4`}
+          src={`http://localhost:3000/video`}
           type="video/mp4"
         />
       </video>
