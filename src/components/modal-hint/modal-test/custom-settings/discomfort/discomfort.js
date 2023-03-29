@@ -7,7 +7,7 @@ export default function Discomfort({
   customSettings,
 }) {
   const discomforts = [
-    "Эффекты мерцания",
+    "Мерцание",
     "Резкая смена кадров",
     "Калейдоскопическая съёмка",
     "Высокая контрастность",

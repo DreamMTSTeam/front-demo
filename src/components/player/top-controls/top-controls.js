@@ -7,7 +7,7 @@ export default function TopControls() {
   const handleCloseButton = () => {};
   return (
     <div className={styles.topControls}>
-      <div className={styles.videoTitle}>Some title</div>
+      <div className={styles.videoTitle}>Title</div>
 
       <img
         className={`${styles.svgIcon}`}

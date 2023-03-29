@@ -43,17 +43,17 @@ export default function Player({ handleClose }) {
     const video = document.querySelector("video");
     if (video.volume + 0.2 <= 1) {
       video.volume += 0.2;
-      setSound(sound + 20)
+      setSound(sound + 20);
     }
-  }
+  };
 
   const handleSoundDown = () => {
     const video = document.querySelector("video");
     if (video.volume - 0.2 >= 0) {
       video.volume -= 0.2;
-      setSound(sound - 20)
+      setSound(sound - 20);
     }
-  }
+  };
 
   const handlePlayButton = (opt) => {
     const video = document.querySelector("video");
@@ -61,7 +61,7 @@ export default function Player({ handleClose }) {
       video.pause();
       setIsPlaying(!isPlaying);
     } else {
-      if (opt !== "modal"){
+      if (opt !== "modal") {
         video.play();
         setIsPlaying(!isPlaying);
       }
@@ -93,16 +93,16 @@ export default function Player({ handleClose }) {
   };
 
   const handleMouseLeave = () => {
-    // setisHoveringControls(false);
-    // clearTimeout(timeoutRef.current);
+    setisHoveringControls(false);
+    clearTimeout(timeoutRef.current);
   };
 
   const handleMouseMove = () => {
     setisHoveringControls(true);
-    // clearTimeout(timeoutRef.current);
-    // timeoutRef.current = setTimeout(() => {
-    //   setisHoveringControls(false);
-    // }, 5000);
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setisHoveringControls(false);
+    }, 5000);
   };
 
   const formatTime = (timeInSeconds) => {
@@ -122,7 +122,7 @@ export default function Player({ handleClose }) {
         controlsList="nodownload nofullscreen"
       >
         <source
-          src={`${process.env.PUBLIC_URL}/samples/sample.mp4`}
+          src={`${process.env.PUBLIC_URL}/samples/sample3.mp4`}
           type="video/mp4"
         />
       </video>
@@ -136,7 +136,7 @@ export default function Player({ handleClose }) {
         <MiddleControls playVideo={handlePlayButton} isPlaying={isPlaying} />
 
         <div className={styles.bottomControls}>
-          <ProgressBar 
+          <ProgressBar
             formatTime={formatTime}
             progress={progress}
             currentTime={currentTime}
